@@ -7,22 +7,18 @@ import java.util.Calendar;
 import java.util.Date;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/Refresh")
-
-// 扩展 HttpServlet 类
 public class Refresh extends HttpServlet {
 
-	// 处理 GET 方法请求的方法
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 设置刷新自动加载时间为 5 秒
 		response.setIntHeader("Refresh", 5);
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
 
 		// 使用默认时区和语言环境获得一个日历
 		Calendar cale = Calendar.getInstance();
@@ -40,7 +36,7 @@ public class Refresh extends HttpServlet {
 						+ "<h1 align=\"center\">" + title + "</h1>\n" + "<p>当前时间是：" + nowTime + "</p>\n");
 	}
 
-	// 处理 POST 方法请求的方法
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

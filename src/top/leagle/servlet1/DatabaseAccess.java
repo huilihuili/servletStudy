@@ -17,7 +17,6 @@ public class DatabaseAccess extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;
 
-	
 	// JDBC 驱动名及数据库 URL
 	static final String JDBC_DRIVER = "com.mysql.jdbc.Driver";
 	static final String DB_URL = "jdbc:mysql://localhost:3306/RUNOOB";
@@ -33,8 +32,6 @@ public class DatabaseAccess extends HttpServlet {
 			throws ServletException, IOException {
 		Connection conn = null;
 		Statement stmt = null;
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String title = "Servlet Mysql 测试 - 菜鸟教程";
 		String docType = "<!DOCTYPE html>\n";

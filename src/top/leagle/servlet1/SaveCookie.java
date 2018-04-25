@@ -17,6 +17,7 @@ public class SaveCookie extends HttpServlet {
 		super();
 	}
 
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// 为名字和姓氏创建 Cookie
 		Cookie name = new Cookie("name", request.getParameter("name")); // 中文转码
@@ -30,8 +31,6 @@ public class SaveCookie extends HttpServlet {
 		response.addCookie(name);
 		response.addCookie(url);
 
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
 		System.out.println(request.getParameter("name"));
 		PrintWriter out = response.getWriter();
 		String title = "设置 Cookie 实例";

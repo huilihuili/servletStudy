@@ -34,18 +34,15 @@ public class SessionTrack extends HttpServlet {
 		String userID = new String("Runoob");
 
 		// 检查网页上是否有新的访问者
-		if (session.isNew()) {
+		if (session.getAttribute(userIDKey) == null) {
 			title = "你好，新用户";
 			session.setAttribute(userIDKey, userID);
 		} else {
 			visitCount = (Integer) session.getAttribute(visitCountKey);
 			visitCount = visitCount + 1;
-			userID = (String) session.getAttribute(userIDKey);
 		}
 		session.setAttribute(visitCountKey, visitCount);
 
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 
 		String docType = "<!DOCTYPE html>\n";

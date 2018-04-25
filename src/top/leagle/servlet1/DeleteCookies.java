@@ -23,9 +23,6 @@ public class DeleteCookies extends HttpServlet {
 		// 获取与该域相关的 Cookie 的数组
 		cookies = request.getCookies();
 
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
-
 		PrintWriter out = response.getWriter();
 		String title = "删除 Cookie 实例";
 		String docType = "<!DOCTYPE html>\n";

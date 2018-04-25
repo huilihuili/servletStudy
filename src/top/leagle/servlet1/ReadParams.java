@@ -5,7 +5,6 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -13,21 +12,13 @@ import javax.servlet.http.HttpServletResponse;
 public class ReadParams extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
-	/**
-	 * @see HttpServlet#HttpServlet()
-	 */
 	public ReadParams() {
 		super();
 	}
 
-	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	@Override
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
 		PrintWriter out = response.getWriter();
 		String title = "读取所有的表单数据";
 		String docType = "<!doctype html public \"-//w3c//dtd html 4.0 " + "transitional//en\">\n";
@@ -36,10 +27,10 @@ public class ReadParams extends HttpServlet {
 				+ "<table width=\"100%\" border=\"1\" align=\"center\">\n" + "<tr bgcolor=\"#949494\">\n"
 				+ "<th>参数名称</th><th>参数值</th>\n" + "</tr>\n");
 
-		Enumeration paramNames = request.getParameterNames();
+		Enumeration<String> paramNames = request.getParameterNames();
 
 		while (paramNames.hasMoreElements()) {
-			String paramName = (String) paramNames.nextElement();
+			String paramName = paramNames.nextElement();
 			out.print("<tr><td>" + paramName + "</td>\n");
 			String[] paramValues = request.getParameterValues(paramName);
 			// 读取单个值的数据
@@ -62,13 +53,9 @@ public class ReadParams extends HttpServlet {
 		out.println("\n</table>\n</body></html>");
 	}
 
-	/**
-	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
-	 *      response)
-	 */
+	@Override
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
 

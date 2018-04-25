@@ -5,21 +5,16 @@ import java.io.PrintWriter;
 import java.util.Enumeration;
 
 import javax.servlet.ServletException;
-import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@WebServlet("/DisplayHeader")
-
-// 扩展 HttpServlet 类
 public class DisplayHeader extends HttpServlet {
 
-	// 处理 GET 方法请求的方法
-	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
+	private static final long serialVersionUID = 1L;
 
+	@Override
+	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		PrintWriter out = response.getWriter();
 		String title = "HTTP Header 请求实例 - 菜鸟教程实例";
 		String docType = "<!DOCTYPE html> \n";
@@ -28,10 +23,10 @@ public class DisplayHeader extends HttpServlet {
 				+ "<table width=\"100%\" border=\"1\" align=\"center\">\n" + "<tr bgcolor=\"#949494\">\n"
 				+ "<th>Header 名称</th><th>Header 值</th>\n" + "</tr>\n");
 
-		Enumeration headerNames = request.getHeaderNames();
+		Enumeration<String> headerNames = request.getHeaderNames();
 
 		while (headerNames.hasMoreElements()) {
-			String paramName = (String) headerNames.nextElement();
+			String paramName = headerNames.nextElement();
 			out.print("<tr><td>" + paramName + "</td>\n");
 			String paramValue = request.getHeader(paramName);
 			out.println("<td> " + paramValue + "</td></tr>\n");
@@ -39,7 +34,7 @@ public class DisplayHeader extends HttpServlet {
 		out.println("</table>\n</body></html>");
 	}
 
-	// 处理 POST 方法请求的方法
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}

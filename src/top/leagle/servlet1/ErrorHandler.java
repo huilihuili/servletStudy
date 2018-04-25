@@ -8,10 +8,11 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-//扩展 HttpServlet 类
 public class ErrorHandler extends HttpServlet {
 
-	// 处理 GET 方法请求的方法
+	private static final long serialVersionUID = 1L;
+
+	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		Throwable throwable = (Throwable) request.getAttribute("javax.servlet.error.exception");
 		Integer statusCode = (Integer) request.getAttribute("javax.servlet.error.status_code");
@@ -23,9 +24,6 @@ public class ErrorHandler extends HttpServlet {
 		if (requestUri == null) {
 			requestUri = "Unknown";
 		}
-		// 设置响应内容类型
-		response.setContentType("text/html;charset=UTF-8");
-
 		PrintWriter out = response.getWriter();
 		String title = "菜鸟教程 Error/Exception 信息";
 
@@ -64,7 +62,7 @@ public class ErrorHandler extends HttpServlet {
 
 	}
 
-	// 处理 POST 方法请求的方法
+	@Override
 	public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doGet(request, response);
 	}
