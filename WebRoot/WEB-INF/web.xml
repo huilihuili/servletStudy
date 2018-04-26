@@ -179,6 +179,32 @@
 		<url-pattern>/pageRedirect</url-pattern>
 	</servlet-mapping>
 
+	<servlet>
+		<servlet-name>pageHitCounter</servlet-name>
+		<servlet-class>top.leagle.servlet1.PageHitCounter</servlet-class>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>pageHitCounter</servlet-name>
+		<url-pattern>/pageHitCounter</url-pattern>
+	</servlet-mapping>
+
+	<filter>
+		<filter-name>SiteHitCounter</filter-name>
+		<filter-class>top.leagle.servlet1.SiteHitCounter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>SiteHitCounter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+	<servlet>
+		<servlet-name>sendEmail</servlet-name>
+		<servlet-class>top.leagle.servlet1.SendEmail</servlet-class>
+	</servlet>
+
+	<servlet-mapping>
+		<servlet-name>sendEmail</servlet-name>
+		<url-pattern>/sendEmail</url-pattern>
+	</servlet-mapping>
 	<session-config>
 		<session-timeout>15</session-timeout>
 	</session-config>
