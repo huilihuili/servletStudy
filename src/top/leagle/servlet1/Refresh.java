@@ -34,6 +34,7 @@ public class Refresh extends HttpServlet {
 		out.println(
 				docType + "<html>\n" + "<head><title>" + title + "</title></head>\n" + "<body bgcolor=\"#f0f0f0\">\n"
 						+ "<h1 align=\"center\">" + title + "</h1>\n" + "<p>当前时间是：" + nowTime + "</p>\n");
+	
 	}
 
 	@Override

@@ -4,7 +4,7 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>文件上传结果</title>
+<title>message</title>
 </head>
 <body>
     <center>
